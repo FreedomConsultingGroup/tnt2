@@ -9,19 +9,18 @@ package tnt
 class Documents {
     static belongsTo = [customer:Customers]
     static mapping = {
-         table 'documents'
          // version is set to false, because this isn't available by default for legacy databases
          version false
        //  idCustomers column:'id'
-       customers insertable: false
-       customers updateable: false
+      // customers insertable: false
+      // customers updateable: false
     }
     //Long customersId
     String name
     String description
     String hash
     Date dateUploaded=new Date()
-    Date dateModified=new Date()
+    Date dateCreated,lastUpdated
     String comments
     String storagePath
     // Relation

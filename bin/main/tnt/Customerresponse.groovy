@@ -1,3 +1,4 @@
+package tnt
 /**
  * The Customerresponse entity.
  *
@@ -7,32 +8,29 @@
  */
 class Customerresponse {
     static mapping = {
-         table 'customerresponse'
          // version is set to false, because this isn't available by default for legacy databases
          version false
+         autoTimestamp true
          // In case a sequence is needed, changed the identity generator for the following code:
 //       id generator:'sequence', column:'id', params:[sequence:'customerresponse_sequence']
-         id generator:'identity', column:'id'
-         id composite:['id'], generator:'assigned'
-         customersIdCustomers column:'customers_id'
-         questionsIdQuestions column:'questions_id'
+       //  id generator:'identity', column:'id'
+        // id composite:['id'], generator:'assigned'
+        // customersIdCustomers column:'customers_id'
+         //questionsIdQuestions column:'questions_id'
     }
     String responseComment
-    String customersUserid
-    Date dateAnswered
+    Date dateAnswered=new Date()
     String response
-    Long id
+    //Long id
+    Date lastUpdated, dateCreated
+    Customers customersId
+    Questions questionsId
 
     static constraints = {
-        responseComment()
-        customersUserid(size: 1..25, blank: false)
-        dateAnswered(nullable: true)
+        dateAnswered(display:false, blank:false)
         response(size: 0..100)
-        id()
-        customersIdCustomers()
-        questionsIdQuestions()
     }
     String toString() {
-        return "${customersId}" 
+        return "${customersId},${questionsId}" 
     }
 }
