@@ -1,4 +1,5 @@
 package tnt
+import grails.gorm.transactions.*
 /**
  * The Documents entity.
  *
@@ -24,18 +25,14 @@ class Documents {
     String comments
     String storagePath
     // Relation
-    Customers customers
+    //Customers customers
 
     static constraints = {
-      //  customersId(max: 9999999999L)
         name(size: 1..100, blank: false)
         description(size: 0..2000)
-        hash(size: 0..2000)
-        dateUploaded(nullable: true)
-        dateModified(nullable: true)
+       // hash(size: 0..2000)
         comments()
         storagePath(size: 0..2000)
-       // idCustomers()
     }
     String toString() {
         return "${id}" 

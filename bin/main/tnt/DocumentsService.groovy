@@ -4,6 +4,7 @@ import grails.gorm.services.Service
 
 @Service(Documents)
 interface DocumentsService {
+    static transactional=true
 
     Documents get(Serializable id)
 
